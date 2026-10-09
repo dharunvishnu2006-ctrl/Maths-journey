@@ -1,0 +1,1 @@
+| 2026-10-09 | Container With Most Water (LC 11) | Two Pointers (Opposite Ends) | 50 mins | Rung 0 | Shorter side is the strict bottleneck; moving the taller line reduces width without height upside, so always advance the shorter pointer. |
