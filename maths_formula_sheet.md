@@ -53,3 +53,27 @@ Here, $\lambda = 3$ is the dominant eigenvalue and $v = \begin{bmatrix} 1 \\ 1 \
 3. $C = \frac{1}{3}\begin{bmatrix} 20 & 12 \\ 12 & 20 \end{bmatrix}$
 4. $\lambda = [32/3, 8/3] \approx [10.67, 2.67]$
 5. $r = [0.80, 0.20]$
+
+## Step 182: PCA Projection & Loadings
+
+### Formulas
+* $X_c = X - \boldsymbol{\mu}$
+* $Z = X_c W$
+* Loadings in manual $W$: columns of $W$ ($d \times k$).
+* Loadings in sklearn: rows of `pca.components_`, so $W = \text{pca.components\_}[:k].T$.
+* Sklearn projection: $Z = (X - \text{pca.mean\_}) @ \text{pca.components\_}[:k].T$
+
+### Symbols
+* $X$: Raw input data $(n \times d)$
+* $\boldsymbol{\mu}$: Feature mean vector $(d,)$
+* $X_c$: Mean-centered data $(n \times d)$
+* $W$: Weight/loading matrix $(d \times k)$
+* $Z$: Projected score matrix $(n \times k)$
+* `pca.components_`: Principal axes as rows $(k \times d)$
+* $k$: Number of retained components
+
+### Example (Tailor Size Axis)
+* Point: $[42, 34]$, Mean: $\boldsymbol{\mu} = [40, 32]$
+* $X_c = [42 - 40, 34 - 32] = [2, 2]$
+* Weight $\mathbf{w} = [0.7071, 0.7071]^T$
+* Score $z = 2(0.7071) + 2(0.7071) = \mathbf{2.8284}$
