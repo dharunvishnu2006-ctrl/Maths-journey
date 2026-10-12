@@ -1,0 +1,37 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+
+# 1. Sentinel telemetry matrix (8 agents x 5 features)
+X = np.array([
+    [5, 7, 3, 6, 2],
+    [6, 8, 5, 4, 3],
+    [4, 5, 2, 7, 1],
+    [8, 9, 7, 3, 5],
+    [5, 6, 6, 5, 4],
+    [7, 8, 4, 2, 4],
+    [3, 4, 3, 8, 2],
+    [6, 7, 8, 4, 6]
+], dtype=float)
+
+# 2. Fit PCA and get variance ratios
+pca = PCA().fit(X)
+evr = pca.explained_variance_ratio_
+cum_evr = np.cumsum(evr)
+
+# 3. Build and save the scree plot
+comps = np.arange(1, len(evr) + 1)
+
+plt.figure(figsize=(8, 5))
+plt.bar(comps, evr, alpha=0.6, label='Individual explained variance')
+plt.plot(comps, cum_evr, marker='o', color='red', label='Cumulative explained variance')
+plt.axhline(y=0.95, color='gray', linestyle='--', label='95% threshold')
+plt.xlabel('Principal Component')
+plt.ylabel('Explained Variance Ratio')
+plt.title('Sentinel Telemetry Scree Plot')
+plt.xticks(comps)
+plt.ylim(0, 1.05)
+plt.legend()
+plt.tight_layout()
+plt.savefig('scree.png')
+plt.close()
