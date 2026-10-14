@@ -77,3 +77,34 @@ Here, $\lambda = 3$ is the dominant eigenvalue and $v = \begin{bmatrix} 1 \\ 1 \
 * $X_c = [42 - 40, 34 - 32] = [2, 2]$
 * Weight $\mathbf{w} = [0.7071, 0.7071]^T$
 * Score $z = 2(0.7071) + 2(0.7071) = \mathbf{2.8284}$
+
+## Step 183: SVD Decomposition & Truncated SVD
+
+### Formulas
+
+* $A = U \Sigma V^T$
+* Rank-$k$ reconstruction: $A_k = U_{:, :k} \, \Sigma_{:k, :k} \, V_{:k, :}^T = \sum_{i=1}^k \sigma_i \mathbf{u}_i \mathbf{v}_i^T$
+* Reconstruction error (Frobenius): $\Vert{}A - A_k\Vert{}_F = \sqrt{\sigma_{k+1}^2 + \dots + \sigma_{\min(m, n)}^2}$
+* Share kept: $\frac{\sum_{i=1}^k \sigma_i^2}{\sum_{i=1}^{\min(m, n)} \sigma_i^2} \times 100\%$
+
+### Symbols
+
+* $A$: Input matrix $(m \times n)$
+* $U$: Left singular vectors / output directions $(m \times m)$
+* $\Sigma$: Diagonal rectangular matrix of singular values $(m \times n)$
+* $V^T$: Right singular vectors / input directions $(n \times n)$
+* $\sigma_i$: $i$-th singular value ($\sqrt{\lambda_i(A^T A)}$), non-negative and sorted descending
+* $k$: Number of top singular values retained
+* $A_k$: Best rank-$k$ approximation of $A$ (Eckart–Young theorem)
+
+### Example ($2 \times 2$ Matrix)
+
+* Matrix: $A = \begin{bmatrix} 0 & 3 \\ 0 & 0 \end{bmatrix}$
+* $A^T A = \begin{bmatrix} 0 & 0 \\ 0 & 9 \end{bmatrix} \implies \sigma_1 = 3, \; \sigma_2 = 0$
+* Vectors: $\mathbf{v}_1 = \begin{bmatrix} 0 \\ 1 \end{bmatrix}, \quad \mathbf{u}_1 = \frac{A \mathbf{v}_1}{\sigma_1} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$
+* Rank-1 approximation ($k = 1$):
+
+$$A_1 = 3 \begin{bmatrix} 1 \\ 0 \end{bmatrix} \begin{bmatrix} 0 & 1 \end{bmatrix} = \begin{bmatrix} 0 & 3 \\ 0 & 0 \end{bmatrix} = A$$
+
+
+* Share kept: $\mathbf{100\%}$, Error: $\mathbf{0}$
