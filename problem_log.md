@@ -10,3 +10,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-13 | LC 875 Koko Eating Bananas | Binary Search on Answer | 48 min | 0 | When total hours decrease monotonically as speed increases, search the bounded answer space $[1, \max(\text{piles})]$. Use $(p + k - 1) // k$ to compute ceiling strictly with integer arithmetic to avoid IEEE 754 float precision drift on large values. Write plan comments *before* writing code so they guide the build rather than document it after. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 2026-10-14 | Remove Nth Node From End of List (LeetCode 19) | Two Pointers (Fixed-Gap / Fast & Slow) + Dummy Sentinel | 34m | Medium | Using a dummy head unified the edge cases when deleting the true head node, and spacing fast $(n+1)$ ahead positions slow exactly on the predecessor node for an $O(1)$-space, single-pass deletion. |
