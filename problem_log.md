@@ -13,4 +13,4 @@
 
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
-| 2026-10-14 | Remove Nth Node From End of List (LeetCode 19) | Two Pointers (Fixed-Gap / Fast & Slow) + Dummy Sentinel | 34m | Medium | Using a dummy head unified the edge cases when deleting the true head node, and spacing fast $(n+1)$ ahead positions slow exactly on the predecessor node for an $O(1)$-space, single-pass deletion. |
+| 2026-10-14 | Remove Nth Node From End of List (LeetCode 19) | Two Pointers (Fixed-Gap / Fast & Slow) + Dummy Sentinel | 34m | 0 | Using a dummy head unified the edge cases when deleting the true head node, and spacing fast $(n+1)$ ahead positions slow exactly on the predecessor node for an $O(1)$-space, single-pass deletion. |
