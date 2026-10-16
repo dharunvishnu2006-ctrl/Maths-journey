@@ -108,3 +108,51 @@ $$A_1 = 3 \begin{bmatrix} 1 \\ 0 \end{bmatrix} \begin{bmatrix} 0 & 1 \end{bmatri
 
 
 * Share kept: $\mathbf{100\%}$, Error: $\mathbf{0}$
+
+## Step 184: Linear Systems, Normal Equations & Condition Number
+
+### Formulas
+
+* Exact system: `A x = b`  (solution: `x = A^-1 b` when `A` is square and invertible)
+* Normal equation (Least Squares): `A^T A x = A^T b`
+* Condition number: `cond(A) = sigma_max / sigma_min`
+
+---
+
+### Symbols
+
+* `A`: Coefficient matrix of shape `(m, n)` representing equations and feature weights
+* `x`: Unknown vector of shape `(n,)` to solve for
+* `b`: Target constants or observed totals vector of shape `(m,)`
+* `A^T`: Transpose of matrix `A`, shape `(n, m)`
+* `A^T A`: Normal equation matrix, always square `(n, n)`
+* `sigma_max`: Largest singular value of `A` (maximum stretch)
+* `sigma_min`: Smallest singular value of `A` (minimum stretch)
+* `cond(A)`: Ratio measuring sensitivity/error magnification of the system
+
+---
+
+### Hand-Worked Example
+
+System:
+
+1. `x + y = 5`
+2. `x + 2y = 8`
+
+Matrix form `A x = b`:
+`A = [[1, 1], [1, 2]]`, `b = [5, 8]`
+
+1. **Determinant of `A`:**
+`det(A) = (1)(2) - (1)(1) = 2 - 1 = 1`
+2. **Inverse `A^-1`:**
+`A^-1 = (1 / 1) * [[2, -1], [-1, 1]] = [[2, -1], [-1, 1]]`
+3. **Solve for `x`:**
+`x = A^-1 b = [[2, -1], [-1, 1]] @ [5, 8]`
+`x_1 = 2(5) - 1(8) = 10 - 8 = 2`
+`x_2 = -1(5) + 1(8) = -5 + 8 = 3`
+
+**Solution:**
+`x = 2`, `y = 3`
+
+**Verification:**
+`2 + 3 = 5` and `2 + 2(3) = 8`
