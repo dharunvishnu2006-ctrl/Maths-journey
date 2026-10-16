@@ -14,3 +14,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-14 | Remove Nth Node From End of List (LeetCode 19) | Two Pointers (Fixed-Gap / Fast & Slow) + Dummy Sentinel | 34m | 0 | Using a dummy head unified the edge cases when deleting the true head node, and spacing fast $(n+1)$ ahead positions slow exactly on the predecessor node for an $O(1)$-space, single-pass deletion. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 2026-10-16 | Binary Tree Level Order Traversal (LeetCode 102) | BFS / Level-Order Traversal with Queue (`collections.deque`) | 49m | Rung 2 | Freezing `level_size = len(queue)` acts as a bookmark to process one full tier before child pushes bleed into it, while `deque.popleft()` ensures an $O(N)$ runtime instead of the $O(N^2)$ shifting penalty of `list.pop(0)`. |
