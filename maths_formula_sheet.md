@@ -156,3 +156,45 @@ Matrix form `A x = b`:
 
 **Verification:**
 `2 + 3 = 5` and `2 + 2(3) = 8`
+
+## Step 185: Derivatives from First Principles & the Power Rule
+
+### Formulas & Definitions
+
+1. **Derivative (Limit Definition):**
+   `f'(x) = limit as h -> 0 of (f(x + h) - f(x)) / h`
+   * `f(x + h) - f(x)`: The change in output value (vertical rise).
+   * `h`: The tiny step size along the input axis (horizontal run).
+   * `(f(x + h) - f(x)) / h`: Average rate of change across the small gap `h`.
+   * `limit as h -> 0`: Shrinks the gap to zero, turning the secant slope into the exact instantaneous slope at point `x`.
+
+2. **The Power Rule:**
+   `d/dx (x^n) = n * x^(n - 1)`
+   * Bring the current exponent `n` to the front as a multiplier, then decrease the power by 1.
+
+3. **Constant Rule:**
+   `d/dx (c) = 0`
+   * A flat constant has zero change, so its slope is always 0.
+
+---
+
+### Hand-Worked Example
+
+Function: `f(x) = 2x^2 + 5x` evaluated at `x = 3`
+
+1. **Using the Limit Definition:**
+   * `f(3) = 2(3)^2 + 5(3) = 2(9) + 15 = 33`
+   * `f(3 + h) = 2(3 + h)^2 + 5(3 + h)`
+     `= 2(9 + 6h + h^2) + 15 + 5h`
+     `= 18 + 12h + 2h^2 + 15 + 5h`
+     `= 33 + 17h + 2h^2`
+   * `f(3 + h) - f(3) = (33 + 17h + 2h^2) - 33 = 17h + 2h^2`
+   * Divide by `h`:
+     `(17h + 2h^2) / h = 17 + 2h`
+   * Take `limit as h -> 0`:
+     `17 + 2(0) = 17`
+
+2. **Verification via Power Rule:**
+   * `f'(x) = 2 * (2x^(2-1)) + 5 * (1x^(1-1))`
+   * `f'(x) = 4x + 5`
+   * At `x = 3`: `4(3) + 5 = 12 + 5 = 17`
