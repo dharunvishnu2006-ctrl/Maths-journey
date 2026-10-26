@@ -18,3 +18,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-16 | Binary Tree Level Order Traversal (LeetCode 102) | BFS / Level-Order Traversal with Queue (`collections.deque`) | 49m | Rung 2 | Freezing `level_size = len(queue)` acts as a bookmark to process one full tier before child pushes bleed into it, while `deque.popleft()` ensures an $O(N)$ runtime instead of the $O(N^2)$ shifting penalty of `list.pop(0)`. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 2026-10-26 | LeetCode 200: Number of Islands | Graph / DFS Flood Fill | 15 mins | Rung 1 | When you find land ('1'), sink the entire connected island to '0' with DFS across the 4 orthogonal directions so it is never double-counted. Diagonals do not connect. |
