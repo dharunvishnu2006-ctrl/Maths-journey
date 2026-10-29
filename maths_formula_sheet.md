@@ -198,3 +198,41 @@ Function: `f(x) = 2x^2 + 5x` evaluated at `x = 3`
    * `f'(x) = 2 * (2x^(2-1)) + 5 * (1x^(1-1))`
    * `f'(x) = 4x + 5`
    * At `x = 3`: `4(3) + 5 = 12 + 5 = 17`
+
+   ## Step 186: Product Rule, Quotient Rule & Chain Rule
+
+### Formulas
+
+1. **Product Rule:**
+   `(f * g)' = f' * g + f * g'`
+   * **When to use:** Use when two separate variable expressions are multiplied together.
+
+2. **Quotient Rule:**
+   `(f / g)' = (f' * g - f * g') / g^2`
+   * **When to use:** Use when one variable expression is divided by another (fraction form).
+
+3. **Chain Rule:**
+   `[f(g(x))]' = f'(g(x)) * g'(x)`  (outer' * inner')
+   * **When to use:** Use when an expression is nested inside another function (composite function, like an expression raised to a power).
+
+---
+
+### Hand-Worked Example (Chain Rule)
+
+Function: `y = (3x + 2)^3` evaluated at `x = 1`
+
+1. **Break into outer and inner:**
+   * Outer function: `f(u) = u^3` where `u = 3x + 2`
+   * Inner function: `u(x) = 3x + 2`
+
+2. **Differentiate each piece:**
+   * Derivative of outer with respect to `u`: `f'(u) = 3 * u^2 = 3 * (3x + 2)^2`
+   * Derivative of inner with respect to `x`: `u'(x) = 3`
+
+3. **Multiply outer' by inner':**
+   * `y' = f'(u) * u'(x)`
+   * `y' = 3 * (3x + 2)^2 * 3 = 9 * (3x + 2)^2`
+
+4. **Evaluate at `x = 1`:**
+   * `y'(1) = 9 * (3(1) + 2)^2`
+   * `y'(1) = 9 * (5)^2 = 9 * 25 = 225`
