@@ -22,3 +22,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 2026-10-26 | LeetCode 200: Number of Islands | Graph / DFS Flood Fill | 46 mins | Rung 1 | When you find land ('1'), sink the entire connected island to '0' with DFS across the 4 orthogonal directions so it is never double-counted. Diagonals do not connect. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+|---|---|---|---|---|---|
+| 2026-10-29 | Kth Largest Element in an Array (Step 186 POTD) | Min-Heap of size k | 25 mins | 2 | Maintain a min-heap capped at size k by popping the minimum whenever length exceeds k; at the end, heap[0] holds the kth largest element in O(N log k) time without sorting the whole array. |
