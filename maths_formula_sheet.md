@@ -236,3 +236,35 @@ Function: `y = (3x + 2)^3` evaluated at `x = 1`
 4. **Evaluate at `x = 1`:**
    * `y'(1) = 9 * (3(1) + 2)^2`
    * `y'(1) = 9 * (5)^2 = 9 * 25 = 225`
+
+## Step 187: Partial Derivatives and Gradients
+
+### Partial Derivative
+- ∂f/∂x measures how fast the output f changes when only x moves.
+- All other variables (like y and z) are treated as plain constant numbers.
+
+### Gradient (∇f)
+- ∇f = [∂f/∂x, ∂f/∂y, ...]
+- It bundles all individual partial derivatives into a single direction vector.
+- It always points in the direction of steepest uphill increase.
+
+### Symbols
+- ∂ (del / partial): means rate of change with respect to only one input while freezing the others.
+- ∇ (nabla / grad): turns a function into a vector of all its partial derivatives.
+- h (step size): a tiny number (like 1e-5) used to nudge an input slightly for numerical approximation.
+
+### Worked Example
+- Function: f(x, y) = 3*x^2 + 2*y
+- Point: (1, 4)
+
+1. Find partial derivatives:
+   - ∂f/∂x = 6*x + 0 = 6*x
+   - ∂f/∂y = 0 + 2 = 2
+
+2. Gradient formula:
+   - ∇f(x, y) = [6*x, 2]
+
+3. Evaluate at (1, 4):
+   - ∂f/∂x at 1 = 6*(1) = 6
+   - ∂f/∂y at 4 = 2
+   - ∇f(1, 4) = [6, 2]   
