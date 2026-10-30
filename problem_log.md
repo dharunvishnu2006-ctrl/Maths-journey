@@ -26,3 +26,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 |---|---|---|---|---|---|
 | 2026-10-29 | Kth Largest Element in an Array (Step 186 POTD) | Min-Heap of size k | 25 mins | 2 | Maintain a min-heap capped at size k by popping the minimum whenever length exceeds k; at the end, heap[0] holds the kth largest element in O(N log k) time without sorting the whole array. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 2026-10-30 | Jump Game | Greedy | 63 min | 0 | Just keep track of the farthest index you can reach. If i goes past it, you are stuck (return False). Once farthest reaches the last index, return True early. Also, list copies matter in Python loops or pointers will step on each other. |
