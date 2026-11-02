@@ -268,3 +268,41 @@ Function: `y = (3x + 2)^3` evaluated at `x = 1`
    - ∂f/∂x at 1 = 6*(1) = 6
    - ∂f/∂y at 4 = 2
    - ∇f(1, 4) = [6, 2]   
+
+## Step 188: Backpropagation and Multi-Path Accumulation
+
+### The Chain Rule
+dy/dx = (dy/du) * (du/dx)
+Why rates multiply: If y changes 3 times as fast as u, and u changes 2 times as fast as x, then a 1-unit nudge in x shifts u by 2, which shifts y by 2 * 3 = 6. Scaling factors multiply along a chain.
+
+### The Backward Pass
+- Starts at: The final loss node L with dL/dL = 1.0 (the rate of change of any quantity with respect to itself is always 1).
+- Direction: Walks backward against the direction of the computational graph arrows, from the scalar loss back to the inputs and weights.
+- At each arrow: Incoming upstream gradient * local rate of that specific operation = downstream gradient passed to the preceding node.
+
+### Accumulation
+- When a variable splits and feeds into multiple paths, its total derivative is the sum of the contributions from each branch: total dL/dw = path_1 + path_2.
+- The += bug: Assigning with `=` inside code instead of `+=` silently overwrites the gradient accumulated from earlier paths, discarding entire branches of the network.
+
+### Symbols
+- L: Final scalar loss value to minimize.
+- w: Model weight or parameter receiving gradients.
+- x: Input feature or data value.
+- z: Intermediate pre-activation or linear combination node.
+- a: Activated output node (e.g., sigmoid(z)).
+- dL/d(node): Upstream gradient measuring how the total loss changes with respect to that node.
+- d(out)/d(in): Local derivative of an operation holding all other inputs fixed.
+
+### Tiny Worked Example
+Function: L = (w * x) + w, at w = 2, x = 3
+- Forward pass:
+  - m = w * x = 2 * 3 = 6
+  - L = m + w = 6 + 2 = 8
+- Backward pass:
+  - Seed: dL/dL = 1
+  - Local rate for m: dL/dm = 1
+  - Local rate for direct w: dL/dw (path 2) = 1
+  - Path 1 (via m): dL/dm * dm/dw = 1 * x = 1 * 3 = 3
+  - Path 2 (direct): dL/dL * 1 = 1 * 1 = 1
+  - Total dL/dw = Path 1 + Path 2 = 3 + 1 = 4
+  - Check: L = w*(x + 1) = w*(4) -> dL/dw = 4   
