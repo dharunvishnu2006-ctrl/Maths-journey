@@ -34,3 +34,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 2026-11-02 | LeetCode 198 · House Robber | Dynamic Programming (Rolling Variables) | 4:22 pm – 5:06 pm (44 min) | 0 | Alternating parity fails because skipping multiple adjacent houses can give a larger sum; decisions must be made step-by-step using max,which only needs O(1) space since values before i-2 are never revisited. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-11-03 | LeetCode 49: Group Anagrams | Hash Map with Canonical Key | 33min | 1 | Words with identical character counts can share a canonical signature key; sorting characters gives an O(N * K log K) key, but counting 26 letter frequencies into a tuple achieves O(N * K). |
