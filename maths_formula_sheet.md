@@ -306,3 +306,29 @@ Function: L = (w * x) + w, at w = 2, x = 3
   - Path 2 (direct): dL/dL * 1 = 1 * 1 = 1
   - Total dL/dw = Path 1 + Path 2 = 3 + 1 = 4
   - Check: L = w*(x + 1) = w*(4) -> dL/dw = 4   
+
+## Step 189: Gradient Descent Update Rule
+
+- Update Rule: w = w - alpha * (dL/dw)
+  Why minus: The derivative points uphill (steepest increase). Subtracting it forces the step downhill toward the lowest loss.
+
+- Symbols:
+  - w: The model weight/parameter being tuned.
+  - alpha: The learning rate, controlling how large of a step to take.
+  - dL/dw: The gradient (slope) of the loss with respect to w.
+  - L: The loss function measuring how far predictions are from true values.
+
+- Learning Rate (alpha) and the (1 - 2*alpha) Step Multiplier:
+  - Good (0 < alpha < 1.0, optimal near 0.5): Shrinks the error distance by a fraction each step.
+  - Too small (e.g., 0.01): The multiplier (1 - 2*alpha) is close to 1; steps are tiny and convergence is very slow.
+  - Too big (alpha > 1.0): |1 - 2*alpha| > 1; steps overshoot the valley and explode to infinity.
+
+- Local vs Global Minimum:
+  - A local minimum is the lowest point in an immediate neighborhood; a global minimum is the absolute lowest point across the entire function.
+
+- Hand-Worked Example:
+  - Loss: L(w) = (w + 2)^2, so dL/dw = 2w + 4. Start at w0 = 0 with alpha = 0.25.
+  - Step 1: dL/dw = 2(0) + 4 = 4.
+    w1 = 0 - 0.25 * 4 = -1.0.
+  - Step 2: dL/dw = 2(-1.0) + 4 = 2.
+    w2 = -1.0 - 0.25 * 2 = -1.5. (Approaching the minimum at w* = -2.0).
