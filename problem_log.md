@@ -38,3 +38,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 2026-11-03 | LeetCode 49: Group Anagrams | Hash Map with Canonical Key | 33min | 1 | Words with identical character counts can share a canonical signature key; sorting characters gives an O(N * K log K) key, but counting 26 letter frequencies into a tuple achieves O(N * K). |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 2026-11-04 | Container With Most Water | Two Pointers | 28 min | Rung 0 | Moving the taller wall only decreases width while height stays bottlenecked by the shorter wall; always advance the shorter pointer inward to seek a larger area. |
