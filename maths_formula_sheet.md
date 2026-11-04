@@ -332,3 +332,44 @@ Function: L = (w * x) + w, at w = 2, x = 3
     w1 = 0 - 0.25 * 4 = -1.0.
   - Step 2: dL/dw = 2(-1.0) + 4 = 2.
     w2 = -1.0 - 0.25 * 2 = -1.5. (Approaching the minimum at w* = -2.0).
+
+## Step 190: Batch Gradient Descent for Linear Regression
+
+* Update Formulas (Epoch Loop):
+* pred = X @ w
+* error = pred - y
+* Loss: J(w) = (1 / (2*n)) * sum(error^2)
+* grad = (1 / n) * (X.T @ error)
+* Weight Update: w = w - alpha * grad
+Why error = pred - y: Keeps grad pointing in the direction of steepest increase; subtracting it steps downhill. (Using y - pred inverts the sign, causing gradient ascent).
+
+
+* Symbols:
+* X: Input feature matrix of shape (n, d), typically with a leading column of 1s for the bias/intercept.
+* y: Ground-truth target vector of shape (n,).
+* w: Weight vector of shape (d,).
+* n: Total number of training rows/samples.
+* d: Number of parameters/features including intercept.
+* pred: Model predictions vector of shape (n,).
+* error: Difference between predicted and actual values (pred - y).
+* J(w): Mean squared error scaled by 1/(2n).
+* grad: Vector of partial derivatives of loss with respect to each weight, shape (d,).
+* alpha: Learning rate (step size multiplier).
+
+* Hand-Worked Example:
+* Setup: X = [[1, 1], [1, 3]], y = [5, 9], start w = [1, 1], alpha = 0.1, n = 2.
+* 1. pred: [1(1) + 1(1), 1(1) + 3(1)] = [2, 4]
+
+* 2. error: [2 - 5, 4 - 9] = [-3, -5]
+
+* 3. loss: ((-3)^2 + (-5)^2) / (2 * 2) = (9 + 25) / 4 = 34 / 4 = 8.5
+
+* 4. grad:
+grad_0 = (1*(-3) + 1*(-5)) / 2 = -8 / 2 = -4
+grad_1 = (1*(-3) + 3*(-5)) / 2 = (-3 - 15) / 2 = -18 / 2 = -9
+grad = [-4, -9]
+
+* 5. new w:
+w_0 = 1 - 0.1 * (-4) = 1 + 0.4 = 1.4
+w_1 = 1 - 0.1 * (-9) = 1 + 0.9 = 1.9
+new w = [1.4, 1.9]
