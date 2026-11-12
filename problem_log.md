@@ -42,3 +42,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 2026-11-04 | Container With Most Water | Two Pointers | 28 min | Rung 0 | Moving the taller wall only decreases width while height stays bottlenecked by the shorter wall; always advance the shorter pointer inward to seek a larger area. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 2026-11-12 | Minimum Size Subarray Sum (LC 209) | Sliding Window | 20 min | 0 (no hints) | Variable sliding window stays O(n) despite nested while loop because left only moves forward at most n times total, and relies on positive inputs for monotonic window sums. |
