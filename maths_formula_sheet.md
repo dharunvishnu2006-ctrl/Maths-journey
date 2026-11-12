@@ -373,3 +373,40 @@ grad = [-4, -9]
 w_0 = 1 - 0.1 * (-4) = 1 + 0.4 = 1.4
 w_1 = 1 - 0.1 * (-9) = 1 + 0.9 = 1.9
 new w = [1.4, 1.9]
+
+## Step 191 — Mini-Batch Stochastic Gradient Descent (Mini-Batch SGD)
+
+### 1. The Mini-Batch Update
+1. **Shuffle:** At the start of each epoch, generate a random permutation perm of the row indices 0, 1, ..., n - 1.
+2. **Batch Slice:** Split perm into consecutive slices idx of size b (if n is not divisible by b, the final remainder slice has size len(idx) = n % b).
+3. **Batch Gradient & Weight Update:** For each batch idx:
+   - error = X[idx] @ w - y[idx]
+   - grad = (X[idx].T @ error) / len(idx)
+   - w = w - alpha * grad
+
+### 2. Symbols
+- n: Total number of training rows in the dataset.
+- d: Number of features (columns) per row.
+- perm: A random permutation of row indices 0 to n - 1 drawn once per epoch.
+- b: Target mini-batch size (hyperparameter).
+- idx: Current slice of row indices from perm, with actual row count len(idx) (divide by len(idx), not b, so the remainder batch scales properly).
+- X[idx]: Feature sub-matrix for the rows in idx, shape (len(idx), d).
+- y[idx]: Target vector for the rows in idx, shape (len(idx),).
+- w: Parameter (weight) vector being updated, shape (d,).
+- grad: Mean squared error gradient vector computed over the current batch, shape (d,).
+- alpha: Learning rate (step size scalar).
+
+### 3. Tiny Worked Example
+Given X = [[1, 2], [1, 0], [1, 1]], y = [5, 1, 3], initial w = [1, 1], alpha = 0.1, b = 2, and shuffle perm = [1, 2, 0]:
+
+- **Batch 1 (idx = [1, 2], len(idx) = 2):**
+  - X_b = [[1, 0], [1, 1]], y_b = [1, 3]
+  - error = [1, 2] - [1, 3] = [0, -1]
+  - grad = (1 / 2) * [[1, 1], [0, 1]] @ [0, -1] = [-0.5, -0.5]
+  - w = [1, 1] - 0.1 * [-0.5, -0.5] = [1.05, 1.05]
+
+- **Batch 2 — Remainder (idx = [0], len(idx) = 1):**
+  - X_b = [[1, 2]], y_b = [5]
+  - error = [1 * 1.05 + 2 * 1.05] - [5] = [-1.85]
+  - grad = (1 / 1) * [[1], [2]] @ [-1.85] = [-1.85, -3.70]
+  - w = [1.05, 1.05] - 0.1 * [-1.85, -3.70] = [1.235, 1.42]
