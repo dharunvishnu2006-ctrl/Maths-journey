@@ -46,3 +46,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 2026-11-12 | Minimum Size Subarray Sum (LC 209) | Sliding Window | 20 min | 0 (no hints) | Variable sliding window stays O(n) despite nested while loop because left only moves forward at most n times total, and relies on positive inputs for monotonic window sums. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 2026-11-13 | Daily Temperatures (LC 739) | Monotonic Stack | 20 min | 0 | Monotonic decreasing stack stays O(n) despite nested while loop because each day index is pushed once and popped at most once when a strictly warmer temperature arrives. |
