@@ -410,3 +410,33 @@ Given X = [[1, 2], [1, 0], [1, 1]], y = [5, 1, 3], initial w = [1, 1], alpha = 0
   - error = [1 * 1.05 + 2 * 1.05] - [5] = [-1.85]
   - grad = (1 / 1) * [[1], [2]] @ [-1.85] = [-1.85, -3.70]
   - w = [1.05, 1.05] - 0.1 * [-1.85, -3.70] = [1.235, 1.42]
+
+  ## Step 192: Momentum & Nesterov Accelerated Gradient (NAG)
+
+### 1. Update Rules
+* **Standard Momentum:**
+  `v_t = beta * v_{t-1} - alpha * grad(w_{t-1})`
+  `w_t = w_{t-1} + v_t`
+
+* **Nesterov Accelerated Gradient (NAG):**
+  `v_t = beta * v_{t-1} - alpha * grad(w_{t-1} + beta * v_{t-1})`
+  `w_t = w_{t-1} + v_t`
+
+### 2. Symbols
+* `w_t`: Parameter (weight) vector at step `t`.
+* `v_t`: Running velocity vector at step `t` (initialized at `v_0 = 0`).
+* `alpha`: Learning rate (step size scaling the gradient).
+* `beta`: Momentum coefficient in `[0, 1)`, controlling past velocity retention (`1 - beta` acts as friction).
+* `grad(w)`: Gradient of the loss function `L` evaluated at position `w`.
+* `w_{t-1} + beta * v_{t-1}`: Nesterov look-ahead position where the gradient is evaluated before stepping.
+
+### 3. Tiny Worked Example
+Given `L(w) = 0.5 * (w1^2 + 4 * w2^2)` with `grad(w) = [w1, 4 * w2]`, starting at `w0 = [2, 1]`, `v0 = [0, 0]`, with `alpha = 0.1`, `beta = 0.5`:
+
+* **Standard Momentum (2 steps):**
+  * **Step 1:** `grad([2, 1]) = [2, 4]` -> `v1 = 0.5 * [0, 0] - 0.1 * [2, 4] = [-0.2, -0.4]` -> `w1 = [2, 1] + [-0.2, -0.4] = [1.8, 0.6]`
+  * **Step 2:** `grad([1.8, 0.6]) = [1.8, 2.4]` -> `v2 = 0.5 * [-0.2, -0.4] - 0.1 * [1.8, 2.4] = [-0.28, -0.44]` -> `w2 = [1.8, 0.6] + [-0.28, -0.44] = [1.52, 0.16]`
+
+* **Nesterov (Step 2 comparison from same `w1, v1`):**
+  * Look-ahead: `w1 + beta * v1 = [1.8, 0.6] + 0.5 * [-0.2, -0.4] = [1.7, 0.4]`
+  * `grad([1.7, 0.4]) = [1.7, 1.6]` -> `v2 = 0.5 * [-0.2, -0.4] - 0.1 * [1.7, 1.6] = [-0.27, -0.36]` -> `w2 = [1.8, 0.6] + [-0.27, -0.36] = [1.53, 0.24]` (brakes earlier along steep `w2`).
