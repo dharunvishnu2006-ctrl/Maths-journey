@@ -440,3 +440,34 @@ Given `L(w) = 0.5 * (w1^2 + 4 * w2^2)` with `grad(w) = [w1, 4 * w2]`, starting a
 * **Nesterov (Step 2 comparison from same `w1, v1`):**
   * Look-ahead: `w1 + beta * v1 = [1.8, 0.6] + 0.5 * [-0.2, -0.4] = [1.7, 0.4]`
   * `grad([1.7, 0.4]) = [1.7, 1.6]` -> `v2 = 0.5 * [-0.2, -0.4] - 0.1 * [1.7, 1.6] = [-0.27, -0.36]` -> `w2 = [1.8, 0.6] + [-0.27, -0.36] = [1.53, 0.24]` (brakes earlier along steep `w2`).
+
+  ### Adam Optimizer (Step 193)
+
+**Update Equations:**
+- g_t = grad L(w_{t-1})
+- m_t = beta1 * m_{t-1} + (1 - beta1) * g_t
+- v_t = beta2 * v_{t-1} + (1 - beta2) * g_t^2
+- m_hat = m_t / (1 - beta1^t)
+- v_hat = v_t / (1 - beta2^t)
+- w_t = w_{t-1} - alpha * m_hat / (sqrt(v_hat) + eps)
+
+**Symbols:**
+- w_t: parameter vector at step t.
+- g_t: gradient of the loss with respect to w_{t-1} at step t.
+- m_t: first moment estimate (exponential moving average of gradients).
+- v_t: second moment estimate (exponential moving average of squared gradients).
+- m_hat: bias-corrected first moment estimate.
+- v_hat: bias-corrected second moment estimate.
+- alpha: learning rate (step size, default 0.001).
+- beta1: exponential decay rate for the first moment (default 0.9).
+- beta2: exponential decay rate for the second moment (default 0.999).
+- eps: small constant for numerical stability (default 1e-8).
+- t: timestep index (1, 2, 3, ...).
+
+**Tiny Worked Example (L(w) = w^2, w_0 = 2, alpha = 0.1, beta1 = 0.9, beta2 = 0.999, eps ≈ 0, t = 1):**
+- g_1 = 2 * 2 = 4
+- m_1 = 0.9(0) + 0.1(4) = 0.4
+- v_1 = 0.999(0) + 0.001(4^2) = 0.016
+- m_hat = 0.4 / (1 - 0.9^1) = 4
+- v_hat = 0.016 / (1 - 0.999^1) = 16
+- w_1 = 2 - 0.1 * (4 / sqrt(16)) = 2 - 0.1(1) = 1.9
