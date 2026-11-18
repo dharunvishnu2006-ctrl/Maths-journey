@@ -50,3 +50,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 2026-11-13 | Daily Temperatures (LC 739) | Monotonic Stack | 20 min | 0 | Monotonic decreasing stack stays O(n) despite nested while loop because each day index is pushed once and popped at most once when a strictly warmer temperature arrives. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 18-11-2026 | Koko Eating Bananas (LC 875) | Binary Search on Answer | 26 min | 0 | Total hours sum((p + k - 1) // k) is monotonically non-increasing over [1, max(piles)], letting binary search shrink high = mid whenever hours <= h in O(n log m) time and O(1) space. |
