@@ -471,3 +471,30 @@ Given `L(w) = 0.5 * (w1^2 + 4 * w2^2)` with `grad(w) = [w1, 4 * w2]`, starting a
 - m_hat = 0.4 / (1 - 0.9^1) = 4
 - v_hat = 0.016 / (1 - 0.999^1) = 16
 - w_1 = 2 - 0.1 * (4 / sqrt(16)) = 2 - 0.1(1) = 1.9
+
+## Step 194 — Regression Metrics (MSE, MAE, Huber, R²)
+
+**Formulas**
+- **Residuals (errors):** e_i = y_i − ŷ_i
+- **MSE (Mean Squared Error):** MSE = (1 / n) · Σ (y_i − ŷ_i)²
+- **MAE (Mean Absolute Error):** MAE = (1 / n) · Σ |y_i − ŷ_i|
+- **Huber Loss (threshold δ):** Huber = (1 / n) · Σ L_δ(e_i), where L_δ(e) = 0.5 · e² if |e| ≤ δ, else δ · (|e| − 0.5 · δ)
+- **R² (Coefficient of Determination):** R² = 1 − (SS_res / SS_tot), where SS_res = Σ (y_i − ŷ_i)² and SS_tot = Σ (y_i − ȳ)²
+
+**Symbols**
+- **n:** total number of observations
+- **y_i:** true target value for observation i
+- **ŷ_i:** predicted value for observation i
+- **ȳ:** sample mean of the true target values, (1 / n) · Σ y_i
+- **e_i:** prediction residual (y_i − ŷ_i)
+- **δ:** threshold separating quadratic behavior (small errors) from linear behavior (large errors) in Huber loss
+- **SS_res:** residual sum of squares (unexplained squared error of the model)
+- **SS_tot:** total sum of squares (total variance in y around its mean ȳ)
+
+**Tiny Worked Example**
+Given y = [2, 4, 9], ŷ = [3, 4, 5], n = 3, δ = 2:
+- **e:** [2 − 3, 4 − 4, 9 − 5] = [−1, 0, 4]
+- **MSE:** (1 / 3) · ((−1)² + 0² + 4²) = (1 + 0 + 16) / 3 = 17 / 3 ≈ 5.67
+- **MAE:** (1 / 3) · (|−1| + |0| + |4|) = (1 + 0 + 4) / 3 = 5 / 3 ≈ 1.67
+- **Huber (δ = 2):** |e| = [1, 0, 4] → [0.5·(1)², 0.5·(0)², 2·(4 − 1)] = [0.5, 0, 6] → (0.5 + 0 + 6) / 3 = 6.5 / 3 ≈ 2.17
+- **R²:** ȳ = (2 + 4 + 9) / 3 = 5; SS_res = 17; SS_tot = (2 − 5)² + (4 − 5)² + (9 − 5)² = 9 + 1 + 16 = 26 → R² = 1 − (17 / 26) = 9 / 26 ≈ 0.346
