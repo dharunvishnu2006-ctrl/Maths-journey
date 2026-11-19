@@ -54,3 +54,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 18-11-2026 | Koko Eating Bananas (LC 875) | Binary Search on Answer | 26 min | 0 | Total hours sum((p + k - 1) // k) is monotonically non-increasing over [1, max(piles)], letting binary search shrink high = mid whenever hours <= h in O(n log m) time and O(1) space. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 2026-11-19 | Remove Nth Node From End of List (LC 19) | Linked List (Two Pointers + Dummy) | 33 min (3:49–4:22 PM) | Rung 0 | Start both pointers at a dummy node before head so removing the head needs no special case, and advance fast by n + 1 steps so slow stops on the predecessor of the target node when fast hits None. |
