@@ -58,3 +58,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 2026-11-19 | Remove Nth Node From End of List (LC 19) | Linked List (Two Pointers + Dummy) | 33 min (3:49–4:22 PM) | Rung 0 | Start both pointers at a dummy node before head so removing the head needs no special case, and advance fast by n + 1 steps so slow stops on the predecessor of the target node when fast hits None. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 2026-11-20 | Validate Binary Search Tree (LC 98) | Trees (DFS + Min/Max Bounds) | 21 min | Rung 0 | Pass strict (low, high) ancestor bounds down each recursive call rather than checking only immediate children, so deeper subtree violations (like 3 inside 5's right subtree) are caught; O(n) time, O(h) space. |
