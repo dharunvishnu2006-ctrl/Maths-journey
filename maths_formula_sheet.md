@@ -498,3 +498,33 @@ Given y = [2, 4, 9], ŷ = [3, 4, 5], n = 3, δ = 2:
 - **MAE:** (1 / 3) · (|−1| + |0| + |4|) = (1 + 0 + 4) / 3 = 5 / 3 ≈ 1.67
 - **Huber (δ = 2):** |e| = [1, 0, 4] → [0.5·(1)², 0.5·(0)², 2·(4 − 1)] = [0.5, 0, 6] → (0.5 + 0 + 6) / 3 = 6.5 / 3 ≈ 2.17
 - **R²:** ȳ = (2 + 4 + 9) / 3 = 5; SS_res = 17; SS_tot = (2 − 5)² + (4 − 5)² + (9 − 5)² = 9 + 1 + 16 = 26 → R² = 1 − (17 / 26) = 9 / 26 ≈ 0.346
+
+## Step 195 — Classification Loss Functions (BCE, Categorical CE, Hinge, Focal Loss)
+
+### Formulas
+- **Binary Cross-Entropy (BCE):** L = -[ y * ln(p) + (1 - y) * ln(1 - p) ] = -ln(p_t)
+- **Categorical Cross-Entropy (CCE):** L = -sum_{k=1}^{K} ( y_k * ln(p_k) ) = -ln(p_c)
+- **Hinge Loss (SVM):** L = max(0, 1 - y_pm * s)
+- **Focal Loss:** L = -(1 - p_t)^gamma * ln(p_t)   (or with class balance: -alpha_t * (1 - p_t)^gamma * ln(p_t))
+
+### Symbols
+- `y`: true binary label in {0, 1}
+- `p`: predicted probability of class 1 in (0, 1)
+- `p_t`: probability assigned to the true class (p if y = 1, else 1 - p)
+- `K`: total number of classes in multi-class classification
+- `y_k`: one-hot true indicator for class k (1 for true class c, 0 otherwise)
+- `p_k`: softmax predicted probability for class k (p_c is the probability of the true class c)
+- `y_pm`: signed binary target in {-1, +1} (used in Hinge loss)
+- `s`: raw unnormalized margin / logit score in (-inf, +inf)
+- `gamma`: focusing parameter >= 0 that down-weights easy examples (gamma = 0 reduces Focal Loss to BCE)
+- `alpha_t`: optional class-weighting factor in [0, 1] for handling class imbalance
+
+### Tiny Worked Example
+- **Binary case:** True label y = 1, predicted probability p = 0.2 (confident mistake, so p_t = 0.2):
+  - **BCE:** -ln(0.2) = 1.6094
+  - **Focal (gamma = 2):** -(1 - 0.2)^2 * ln(0.2) = 0.64 * 1.6094 = 1.0300
+  - *(Compare with an easy example y = 1, p = 0.9 -> p_t = 0.9: BCE = -ln(0.9) = 0.1054, while Focal = 0.01 * 0.1054 = 0.0011 — dropped by 100x so training focuses on the hard example.)*
+- **Multi-class case (K = 3):** True class = 2 (y = [0, 1, 0]), softmax p = [0.1, 0.7, 0.2]:
+  - **Categorical CE:** -ln(0.7) = 0.3567
+- **Margin case:** True label y_pm = +1, raw model score s = 0.4 (on the right side, but inside the 1.0 margin):
+  - **Hinge Loss:** max(0, 1 - (+1)(0.4)) = max(0, 0.6) = 0.6
