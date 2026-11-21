@@ -62,3 +62,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 2026-11-20 | Validate Binary Search Tree (LC 98) | Trees (DFS + Min/Max Bounds) | 21 min | Rung 0 | Pass strict (low, high) ancestor bounds down each recursive call rather than checking only immediate children, so deeper subtree violations (like 3 inside 5's right subtree) are caught; O(n) time, O(h) space. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 2026-11-21 | Number of Islands (LC 200) | Grid DFS / Connected Components | 37 min | 0 | Sinking visited land cells to `"0"` prevents recounting or infinite loops without extra memory, though recursive DFS risks a stack overflow (`RecursionError`) on very large grids. |
