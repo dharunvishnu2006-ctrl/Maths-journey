@@ -528,3 +528,41 @@ Given y = [2, 4, 9], ŷ = [3, 4, 5], n = 3, δ = 2:
   - **Categorical CE:** -ln(0.7) = 0.3567
 - **Margin case:** True label y_pm = +1, raw model score s = 0.4 (on the right side, but inside the 1.0 margin):
   - **Hinge Loss:** max(0, 1 - (+1)(0.4)) = max(0, 0.6) = 0.6
+
+  
+## Step 196: Probability Basics
+
+**Sample Space (Ω):** Set of all possible outcomes of an experiment.
+
+**Event (A):** A subset of the sample space containing outcomes of interest.
+
+**Axiom 1:** P(A) ≥ 0 — Probability is always non-negative.
+
+**Axiom 2:** P(Ω) = 1 — The probability of the entire sample space is 1.
+
+**Axiom 3:** P(A ∪ B) = P(A) + P(B), when A and B are mutually exclusive.
+
+**Equally Likely Outcomes:**
+
+P(A) = Number of favourable outcomes / Total number of outcomes
+
+**Symbols:**
+- Ω = Sample space.
+- A, B = Events.
+- P(A) = Probability of event A.
+- ∪ = Union (A or B).
+- ∩ = Intersection (A and B).
+- ∅ = Empty event.
+- ≥ = Greater than or equal to.
+
+**Tiny Worked Example:**
+
+Roll one fair die.
+
+Ω = {1, 2, 3, 4, 5, 6}
+
+Let A = getting an even number = {2, 4, 6}.
+
+P(A) = 3/6 = 0.5
+
+Therefore, the probability of rolling an even number is 0.5 (50%).
