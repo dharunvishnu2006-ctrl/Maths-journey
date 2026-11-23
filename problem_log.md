@@ -66,3 +66,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 2026-11-21 | Number of Islands (LC 200) | Grid DFS / Connected Components | 37 min | 0 | Sinking visited land cells to `"0"` prevents recounting or infinite loops without extra memory, though recursive DFS risks a stack overflow (`RecursionError`) on very large grids. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 2026-11-23 | K Closest Points to Origin (LC 973) | Heap / Top K Elements | 20 min | 0 | Used a size-k max-heap with negative squared distances to keep the closest points in O(n log k) time and O(k) space. Completed bonus approach and tested edge cases, ties and k = len(points). |
