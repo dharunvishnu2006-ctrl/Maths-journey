@@ -566,3 +566,31 @@ Let A = getting an even number = {2, 4, 6}.
 P(A) = 3/6 = 0.5
 
 Therefore, the probability of rolling an even number is 0.5 (50%).
+
+
+## Step 197 – Probability Rules
+
+### Five Rules
+
+1. Addition: P(A or B) = P(A) + P(B) - P(A and B)
+2. Complement: P(A') = 1 - P(A)
+3. Multiplication: P(A and B) = P(A) × P(B given A)
+4. Three-event inclusion-exclusion: Add singles - subtract pairs + add the triple intersection.
+5. Total probability: Add P(B given Ai) × P(Ai) for every route.
+
+### Symbols
+
+- ∪ = Union (OR)
+- ∩ = Intersection (AND)
+- A' = Complement (NOT A)
+- P(B|A) = Probability of B given A
+- Σ = Sum of all terms
+- Ai = One event or route in a partition
+
+### Tiny Worked Example
+
+A = 0.4, B = 0.3, P(A and B) = 0.1
+
+P(A or B) = 0.4 + 0.3 - 0.1
+
+Answer = 0.6
