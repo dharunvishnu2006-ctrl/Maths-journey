@@ -70,3 +70,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 2026-11-23 | K Closest Points to Origin (LC 973) | Heap / Top K Elements | 20 min | 0 | Used a size-k max-heap with negative squared distances to keep the closest points in O(n log k) time and O(k) space. Completed bonus approach and tested edge cases, ties and k = len(points). |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 24-11-2026 | Jump Game (LC 55) | Greedy | 43 min | 0 (No hints) | Track the farthest reachable index in one pass using O(n) time and O(1) space. |
