@@ -74,3 +74,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 24-11-2026 | Jump Game (LC 55) | Greedy | 43 min | 0 (No hints) | Track the farthest reachable index in one pass using O(n) time and O(1) space. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 25-11-2026 | House Robber (LC 198) | Dynamic Programming | 32 min | 0 (No hints) | Choose between robbing or skipping each house using O(n) time and O(1) space. |
