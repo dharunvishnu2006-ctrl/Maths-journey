@@ -78,3 +78,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 25-11-2026 | House Robber (LC 198) | Dynamic Programming | 32 min | 0 (No hints) | Choose between robbing or skipping each house using O(n) time and O(1) space. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+| --- | --- | --- | --- | --- | --- |
+| 26-11-2026 | Group Anagrams (LC 49) | Arrays & Hashing | 36 min | 0 (No hints) | Group anagrams using a hash map and sorted-word keys. O(nk log k) time and O(nk) space. |
