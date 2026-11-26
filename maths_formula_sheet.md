@@ -594,3 +594,32 @@ A = 0.4, B = 0.3, P(A and B) = 0.1
 P(A or B) = 0.4 + 0.3 - 0.1
 
 Answer = 0.6
+
+## Step 198 – Conditional Probability & Bayes' Theorem
+
+### Three Rules
+
+1. Conditional probability: P(A | B) = P(A and B) / P(B)
+2. Bayes' theorem: P(A | B) = \[P(B | A) × P(A)\] / P(B)
+3. Independence: P(A | B) = P(A)
+
+### Symbols
+
+- P(A | B) = Probability of A given B
+- Prior = P(A), initial probability
+- Likelihood = P(B | A), probability of evidence given A
+- Evidence = P(B), overall probability of evidence
+- Posterior = P(A | B), updated probability after evidence
+- A ∩ B = Both A and B happen
+
+### Tiny Worked Example
+
+Class of 40 students:
+
+P(C) = 25/40, P(H) = 15/40
+
+P(C and H) = 8/40
+
+P(C | H) = (8/40) / (15/40)
+
+Answer = 8/15 = 0.5333 (53.33%)
