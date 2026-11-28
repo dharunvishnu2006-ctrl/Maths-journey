@@ -82,3 +82,7 @@
 | Date | Problem | Pattern | Time | Rung | What I learned |
 | --- | --- | --- | --- | --- | --- |
 | 26-11-2026 | Group Anagrams (LC 49) | Arrays & Hashing | 36 min | 0 (No hints) | Group anagrams using a hash map and sorted-word keys. O(nk log k) time and O(nk) space. |
+
+| Date | Problem | Pattern | Time | Rung | What I learned |
+|---|---|---|---|---|---|
+| 2026-11-28 | Container With Most Water (LC 11) | Two Pointers | 29 min | 0 – No hints | Move the shorter wall because the water level is limited by it. Two pointers reduce brute force O(n²) to O(n) time and O(1) space. |
