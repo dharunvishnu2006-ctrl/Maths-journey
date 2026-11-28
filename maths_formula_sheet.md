@@ -623,3 +623,31 @@ P(C and H) = 8/40
 P(C | H) = (8/40) / (15/40)
 
 Answer = 8/15 = 0.5333 (53.33%)
+
+
+## Saturday, 28 November 2026 — Poisson Distribution
+
+### Poisson PMF
+P(X = k) = (e^(-λ) × λ^k) / k!
+
+### Symbols
+- P(X = k): Probability of exactly k events.
+- X: Number of events occurring.
+- k: Required number of events (0, 1, 2, ...).
+- λ (lambda): Average number of events in the interval.
+- e: Euler's number (approximately 2.71828).
+- k!: Factorial of k.
+
+### Worked Example
+A helpdesk receives an average of 3 calls per minute.
+What is the probability of exactly 2 calls in one minute?
+
+λ = 3, k = 2
+
+P(X = 2) = (e^(-3) × 3²) / 2!
+
+= (0.049787 × 9) / 2
+
+= 0.2240
+
+Answer: 22.40%
